@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Update{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
 <!--Hi {{ user.username }}!-->
@@ -175,56 +175,22 @@
   </div>
 </nav>
 
+
 <div class="outer">
-  <h4 class="inner"><b>Add New Expense</b></h4>
-  <form action="{% url 'add' %}" method="post">
+  <h4 class="inner"><b>Update Expense</b></h4>
+  <form action="{% url 'updatedone' %}" method="post">
       {% csrf_token %}
-      <input class="inner" type="text"  placeholder="Expense Name" name="name" required>
-      <input class="inner" type="number" placeholder="Cost" required name="cost" step="0.01">
+      <input class="inner" type="text"  placeholder="{{expense.name}}" name="name" value="{{expense.name}}" >
+      <input class="inner" type="number" placeholder="{{expense.cost}}"  name="cost" step="0.01" value="{expense.cost}}">
+      <input type="hidden"  name="expense"  value="{{ expense.id }}">
       <!--<input id="id_image" type="file" class="" name="image">-->
-      <button type="submit" class="btn btn-success inner" >ADD</button>
-    <h4 class="inner">Total Spent Amount <b>₹ <font  color="red" >{{total.cost__sum|floatformat:2 }} </font>/-</b></h4>
+      <button type="submit" class="btn btn-success inner" >Update</button>
   </form>
-
 </div>
-
-
-{% if all_expense %}
-
-<h4 class="section"><font color="black"><b>Your Expense</b></font></h4>
-<table>
-  <tr>
-    <th>S.N.</th>
-    <th>Name</th>
-    <th>Date & Time</th>
-    <th>Cost</th>
-    <th>Remove</th>
-    <th>Update</th>
-  </tr>
-  {% for expense in all_expense %}
-  <tr>
-    <td> {{ forloop.counter }}</td>
-    <td>{{expense.name}}</td>
-    <td>{{expense.expense_date}}</td>
-    <td>₹ <font  color="red">{{expense.cost}}</font> /-</td>
-    <form action="{% url 'delete' %}" method="post" >
-       {% csrf_token %}
-      <td><button class="btn1" type="submit" name="expense"  value="{{ expense.id }}"><i class="fa fa-trash"></i></button></td>
-    </form>
-    <form action="{% url 'update' %}" method="post" >
-       {% csrf_token %}
-      <td><button class="btn2" type="submit" name="expense"  value="{{ expense.id }}"><i class="fa fa-folder"></i></button></td>
-    </form>
-
-  </tr>
-   {% if expense.image %}
-    <img src="{{expense.image.url}}" width="100">
-    {% endif %}
-  {% endfor %}
-</table>
-<br>
-<br>
-{% endif %}
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br>
 <footer class="container-fluid text-center">
   <p>Expense Tracker </p>
 
