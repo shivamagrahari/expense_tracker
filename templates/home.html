@@ -2,54 +2,50 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-<!--Hi {{ user.username }}!-->
-<!--<p><a href="{% url 'logout' %}">logout</a></p>-->
-<!--<p><a href="{% url 'password_change' %}">reset password</a></p>-->
 <html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Add icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
     /* Remove the navbar's default rounded borders and increase the bottom margin */
     .navbar {
-      margin-bottom: 50px;
-      border-radius: 0;
+        margin-bottom: 50px;
+        border-radius: 0;
     }
 
     /* Remove the jumbotron's default bottom margin */
      .jumbotron {
-      margin-bottom: 0;
+        margin-bottom: 0;
     }
 
     /* Add a gray background color and some padding to the footer */
     footer {
-      background-color: #f2f2f2;
-      padding: 25px;
+        background-color: #f2f2f2;
+        padding: 25px;
     }
     .inner{
-    display: inline-block;
+        display: inline-block;
     }
     .dropdown {
-    width:100%;
+        width:100%;
         text-align: center;
     }
 
     .dropdown-content {
-      display: none;
-      position: absolute;
-      width: 100px;
-      background-color: #fff;
-      z-index: 1;
+        display: none;
+        position: absolute;
+        width: 100px;
+        background-color: #fff;
+        z-index: 1;
     }
     .dropbtn {
-    border-radius: 2px;
+        border-radius: 2px;
         background: #101010;
         border: none;
         color: #fff;
@@ -60,18 +56,55 @@
         height:50px;
     }
     .inner{
-    display: inline-block;
-    margin-left : 5%;
+        display: inline-block;
+        margin-left : 5%;
     }
 
-.outer{
-    margin-left : 150px;
-    margin-top  : 50px;
-  }
-  .heading{
-    margin-left : 5%;
+    .outer{
+        margin-left : 150px;
+        margin-top  : 50px;
+    }
+    .heading{
+        margin-left : 5%;
 
-  }
+    }
+    .btn1 {
+        background-color: red;
+        border: none;
+        color: white;
+        padding: 6px 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .btn2 {
+        background-color: brown;
+        border: none;
+        color: white;
+        padding: 6px 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+/* Darker background on mouse-over */
+    .btn:hover {
+        background-color: darkred;
+    }
+   table {
+        border-collapse: collapse;
+        width: 50%;
+   }
+
+   th, td {
+        text-align: left;
+        padding: 16px;
+   }
+
+   tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #C2BDBC;
+        color: black;
+    }
 
   </style>
   <script>
@@ -89,8 +122,6 @@
                  $(".new_expense").hide();
                  $(".Home").show();
                 }
-  </script>
-  <script>
       function myFunction() {
           if($(".dropdown-content").is(":visible"))
               $(".dropdown-content").hide();
@@ -98,140 +129,108 @@
               $(".dropdown-content").show();
         }
   </script>
-  <style>
-.btn1 {
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 6px 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.btn2 {
-  background-color: brown;
-  border: none;
-  color: white;
-  padding: 6px 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: darkred;
-}
-<
-  <style>
-      table {
-        border-collapse: collapse;
-        width: 50%;
-      }
-
-      th, td {
-        text-align: left;
-        padding: 16px;
-      }
-
-      tr:nth-child(even){background-color: #f2f2f2}
-
-      th {
-        background-color: #C2BDBC;
-        color: black;
-      }
-  </style>
 </head>
-<body>
+  <body>
 
-<div class="">
-  <div class="container text-center">
-    <h2><u>Expense Tracker</u></h2>
-  </div>
-</div>
+  <!--Header-->
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+    <div class="">
+      <div class="container text-center">
+        <h2><u>Expense Tracker</u></h2>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active" ><a href="{%url 'home'%}">Home</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <div class="inner"><button onclick="myFunction()" class="dropbtn">{{ user.username }}</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a  style="cursor: pointer;"  href="{% url 'password_change' %}">Password reset</a>
-              <a id="snippet" href="{% url 'logout' %}">Logout</a>
-            </div>
-          </div>
-        </li>
-      </ul>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active" ><a href="{%url 'home'%}">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <div class="inner"><button onclick="myFunction()" class="dropbtn">{{ user.username }}</button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a  style="cursor: pointer;"  href="{% url 'password_change' %}">Password reset</a>
+                  <a id="snippet" href="{% url 'logout' %}">Logout</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <!--Add New Expense -->
+
+    <div class="outer">
+      <h4 class="inner"><b>Add New Expense</b></h4>
+      <form action="{% url 'add' %}" method="post">
+          {% csrf_token %}
+          <input class="inner" type="text"  placeholder="Expense Name" name="name" required>
+          <input class="inner" type="number" placeholder="Cost" required name="cost" step="0.01">
+          <button type="submit" class="btn btn-success inner" >ADD</button>
+        <h4 class="inner">Total Spent Amount <b>₹ <font  color="red" >{{total.cost__sum|floatformat:2 }} </font>/-</b></h4>
+      </form>
     </div>
-  </div>
-</nav>
-
-<div class="outer">
-  <h4 class="inner"><b>Add New Expense</b></h4>
-  <form action="{% url 'add' %}" method="post">
-      {% csrf_token %}
-      <input class="inner" type="text"  placeholder="Expense Name" name="name" required>
-      <input class="inner" type="number" placeholder="Cost" required name="cost" step="0.01">
-      <!--<input id="id_image" type="file" class="" name="image">-->
-      <button type="submit" class="btn btn-success inner" >ADD</button>
-    <h4 class="inner">Total Spent Amount <b>₹ <font  color="red" >{{total.cost__sum|floatformat:2 }} </font>/-</b></h4>
-  </form>
-
-</div>
 
 
-{% if all_expense %}
-
-<h4 class="section"><font color="black"><b>Your Expense</b></font></h4>
-<table>
-  <tr>
-    <th>S.N.</th>
-    <th>Name</th>
-    <th>Date & Time</th>
-    <th>Cost</th>
-    <th>Remove</th>
-    <th>Update</th>
-  </tr>
-  {% for expense in all_expense %}
-  <tr>
-    <td> {{ forloop.counter }}</td>
-    <td>{{expense.name}}</td>
-    <td>{{expense.expense_date}}</td>
-    <td>₹ <font  color="red">{{expense.cost}}</font> /-</td>
-    <form action="{% url 'delete' %}" method="post" >
-       {% csrf_token %}
-      <td><button class="btn1" type="submit" name="expense"  value="{{ expense.id }}"><i class="fa fa-trash"></i></button></td>
-    </form>
-    <form action="{% url 'update' %}" method="post" >
-       {% csrf_token %}
-      <td><button class="btn2" type="submit" name="expense"  value="{{ expense.id }}"><i class="fa fa-folder"></i></button></td>
-    </form>
-
-  </tr>
-   {% if expense.image %}
-    <img src="{{expense.image.url}}" width="100">
+  <!--ALL Expense-->
+    {% if all_expense %}
+    <h4 class="section"><font color="black"><b>Your Expense</b></font></h4>
+    <table>
+      <tr>
+        <th>S.N.</th>
+        <th>Name
+          <a href="/sortbyname"><i style="font-size:16px" class="fa">&#xf0de;</i></a>
+          <a href="/sortbyname_"><i style="font-size:16px" class="fa">&#xf0dd;</i></a>
+        </th>
+        <th>
+          Date & Time
+          <a href="/sortbydate"><i style="font-size:16px" class="fa">&#xf0de;</i></a>
+          <a href="/sortbydate_"><i style="font-size:16px" class="fa">&#xf0dd;</i></a>
+        </th>
+        <th>
+          Cost
+          <a href="/sortbycost"><i style="font-size:16px" class="fa">&#xf0de;</i></a>
+          <a href="/sortbycost_"><i style="font-size:16px" class="fa">&#xf0dd;</i></a>
+        </th>
+        <th>Remove</th>
+        <th>Update</th>
+      </tr>
+      {% for expense in all_expense %}
+      <tr>
+        <td> {{ forloop.counter }}</td>
+        <td>{{expense.name}}</td>
+        <td>{{expense.expense_date}}</td>
+        <td>₹ <font  color="red">{{expense.cost}}</font> /-</td>
+        <form action="{% url 'delete' %}" method="post" >
+          {% csrf_token %}
+          <td><button class="btn1" type="submit" name="expense"  value="{{ expense.id }}"><i class="fa fa-trash"></i></button></td>
+        </form>
+        <form action="{% url 'update' %}" method="post" >
+          {% csrf_token %}
+          <td><button class="btn2" type="submit" name="expense"  value="{{ expense.id }}"><i class="fa fa-folder"></i></button></td>
+        </form>
+      </tr>
+      {% if expense.image %}
+        <img src="{{expense.image.url}}" width="100">
+      {% endif %}
+    {% endfor %}
+    </table>
+    <br><br>
     {% endif %}
-  {% endfor %}
-</table>
-<br>
-<br>
-{% endif %}
-<footer class="container-fluid text-center">
-  <p>Expense Tracker </p>
-
-</footer>
-</body>
+    <footer class="container-fluid text-center">
+      <p>Expense Tracker </p>
+    </footer>
+  </body>
 </html>
-
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">login</a>

@@ -11,5 +11,11 @@ urlpatterns = [
     path('delete/', accounts.views.delete, name='delete'),
     path('update/', accounts.views.update, name='update'),
     path('updatedone/', accounts.views.updatedone, name='updatedone'),
+    path('sortbyname/', accounts.views.sortbyname, name='sortbyname'),
+    path('sortbyname_/', accounts.views.sortbyname_, name='sortbyname_'),
+    path('sortbycost/', accounts.views.sortbycost, name='sortbycost'),
+    path('sortbycost_/', accounts.views.sortbycost_, name='sortbycost_'),
+    path('sortbydate/', accounts.views.sortbydate, name='sortbydate'),
+    path('sortbydate_/', accounts.views.sortbydate_, name='sortbydate_'),
 
 ]

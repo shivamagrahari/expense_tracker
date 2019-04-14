@@ -177,11 +177,12 @@
 
 
 <div class="outer">
-  <h4 class="inner"><b>Update Expense</b></h4>
+  <h4 ><b>Update Expense</b></h4>
+    <br>
   <form action="{% url 'updatedone' %}" method="post">
       {% csrf_token %}
-      <input class="inner" type="text"  placeholder="{{expense.name}}" name="name" value="{{expense.name}}" >
-      <input class="inner" type="number" placeholder="{{expense.cost}}"  name="cost" step="0.01" value="{expense.cost}}">
+      Expense Name : <input class="inner" type="text"  placeholder="{{expense.name}}" name="name" value="{{expense.name}}" >
+      Cost :<input class="inner" type="number" placeholder="{{expense.cost}}"  name="cost" step="0.01" value="{expense.cost}}">
       <input type="hidden"  name="expense"  value="{{ expense.id }}">
       <!--<input id="id_image" type="file" class="" name="image">-->
       <button type="submit" class="btn btn-success inner" >Update</button>
