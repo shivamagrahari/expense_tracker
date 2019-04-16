@@ -54,8 +54,8 @@ def update(request):
 
 def updatedone(request):
     expense=expense_table.objects.get(pk=request.POST['expense'])
-    expense.name=request.POST.get('name')
-    expense.cost=request.POST.get('cost')
+    expense.name = request.POST['name']
+    expense.cost = request.POST['cost']
     expense.save()
     return redirect('/home')
 
