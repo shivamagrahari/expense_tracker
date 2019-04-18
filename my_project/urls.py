@@ -19,6 +19,8 @@ urlpatterns = [
     path('sortbycost_/', accounts.views.sortbycost_, name='sortbycost_'),
     path('sortbydate/', accounts.views.sortbydate, name='sortbydate'),
     path('sortbydate_/', accounts.views.sortbydate_, name='sortbydate_'),
+    path('sortbyimage/', accounts.views.sortbyimage, name='sortbyimage'),
+    path('sortbyimage_/', accounts.views.sortbyimage_, name='sortbyimage_'),
 
 ]
 if settings.DEBUG:

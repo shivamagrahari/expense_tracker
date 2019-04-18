@@ -119,7 +119,19 @@ def sortbydate_(request):
     form = PhotoForm()
     return render(request, 'home.html', {'all_expense': all_expense, 'total': total, 'form': form})
 
+def sortbyimage(request):
+    username = request.user
+    all_expense = expense_table.objects.filter(user=username).order_by('image').all()
+    total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
+    form = PhotoForm()
+    return render(request, 'home.html', {'all_expense': all_expense, 'total': total, 'form': form})
 
+def sortbyimage_(request):
+    username = request.user
+    all_expense = expense_table.objects.filter(user=username).order_by('-image').all()
+    total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
+    form = PhotoForm()
+    return render(request, 'home.html', {'all_expense': all_expense, 'total': total, 'form': form})
 
 
 
