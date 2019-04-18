@@ -171,22 +171,27 @@
     </nav>
 
   <!--Add New Expense -->
-
+    <h4 class="section" style="margin-left: 5%;"><font color="black"><b>New Expense</b></font></h4>
     <div class="outer">
-      <h4 class="inner"><b>Add New Expense</b></h4>
-      <form action="{% url 'add' %}" method="post">
-          {% csrf_token %}
+
+      <form action="{% url 'add' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
           <input class="inner" type="text"  placeholder="Expense Name" name="name" required>
           <input class="inner" type="number" placeholder="Cost" required name="cost" step="0.01">
+        <div class="inner">
+          {{form}}
+        </div>
           <button type="submit" class="btn btn-success inner" >ADD</button>
         <h4 class="inner">Total Spent Amount <b>₹ <font  color="red" >{{total.cost__sum|floatformat:2 }} </font>/-</b></h4>
       </form>
     </div>
-
+    <br><br>
 
   <!--ALL Expense-->
     {% if all_expense %}
-    <h4 class="section"><font color="black"><b>Your Expense</b></font></h4>
+    <h4 class="section" style="margin-left: 5%;"><font color="black"><b>Your Expense</b></font></h4>
+    <br>
     <table>
       <tr>
         <th>S.N.</th>
@@ -204,8 +209,10 @@
           <a href="/sortbycost"><i style="font-size:16px" class="fa">&#xf0de;</i></a>
           <a href="/sortbycost_"><i style="font-size:16px" class="fa">&#xf0dd;</i></a>
         </th>
+         <th>photo</th>
         <th>Remove</th>
         <th>Update</th>
+
       </tr>
       {% for expense in all_expense %}
       <tr>
@@ -213,7 +220,14 @@
         <td>{{expense.name}}</td>
         <td>{{expense.expense_date}}</td>
         <td>₹ <font  color="red">{{expense.cost}}</font> /-</td>
-        <form action="{% url 'delete' %}" method="post" >
+
+        {% if expense.image.Img %}
+        <td><a href="{{expense.image.Img.url}}">{{expense.image.Img.url}}</a></td>
+        {% else%}
+        <td><font class="red">NA</font></td>
+        {%endif%}
+
+         <form action="{% url 'delete' %}" method="post" >
           {% csrf_token %}
           <td><button class="btn1" type="submit" name="expense"  value="{{ expense.id }}"><i class="fa fa-trash"></i></button></td>
         </form>
@@ -221,14 +235,17 @@
           {% csrf_token %}
           <td><button class="btn2" type="submit" name="expense"  value="{{ expense.id }}"><i class="fa fa-folder"></i></button></td>
         </form>
+
       </tr>
-      {% if expense.image %}
-        <img src="{{expense.image.url}}" width="100">
-      {% endif %}
+
     {% endfor %}
     </table>
     <br><br>
+    {% else %}
+  <h3 style="margin-left: 5% ;"> No Expense yet </h3>
     {% endif %}
+    <br><br><br><br>
+    <br><br><br><br>
     <footer class="container-fluid text-center">
       <p>Expense Tracker </p>
     </footer>

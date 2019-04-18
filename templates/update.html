@@ -178,7 +178,13 @@
           Expense Name : <input class="inner" type="text"  placeholder="{{expense.name}}" name="name" value="{{expense.name}}" >
           Cost :<input class="inner" type="number" placeholder="{{expense.cost}}"  name="cost" step="0.01" value="{{expense.cost}}">
           <input type="hidden"  name="expense"  value="{{ expense.id }}">
-          <!--<input id="id_image" type="file" class="" name="image">-->
+          <div class="inner">
+            {% if expense.image.Img %}
+            Image : <a href="{{expense.image.Img.url}}">{{expense.image.Img.url}}</a>
+            {% else %}
+            <font class="red">Image : NA</font>
+            {% endif %}
+          </div>
           <button type="submit" class="btn btn-success inner" >Update</button>
       </form>
     </div>
