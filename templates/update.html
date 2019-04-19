@@ -180,10 +180,11 @@
           <input type="hidden"  name="expense"  value="{{ expense.id }}">
           <div class="inner">
             {% if expense.image.Img %}
-            Image : <a href="{{expense.image.Img.url}}">{{expense.image.Img.url}}</a>
+            <a href="{{expense.image.Img.url}}">{{expense.image.Img.url}}</a>
             {% else %}
-            <font class="red">Image : NA</font>
+            <font class="red">NA</font>
             {% endif %}
+
           </div>
           <button type="submit" class="btn btn-success inner" >Update</button>
       </form>

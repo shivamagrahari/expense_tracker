@@ -7,6 +7,8 @@ from .models import expense_table
 from django.utils import timezone
 from django.db.models import Sum
 from .forms import *
+from django.db.models import F
+
 # Generic View of Signup Page
 
 class SignUp(generic.CreateView):
@@ -132,6 +134,9 @@ def sortbyimage_(request):
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
     form = PhotoForm()
     return render(request, 'home.html', {'all_expense': all_expense, 'total': total, 'form': form})
+
+
+
 
 
 
