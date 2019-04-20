@@ -178,7 +178,7 @@
         {% csrf_token %}
 
           <input class="inner" type="text"  placeholder="Expense Name" name="name" required>
-          <input class="inner" type="number" placeholder="Cost" required name="cost" step="0.01">
+          <input class="inner" type="number" placeholder="Cost" required name="cost" step="0.01" min="0">
         <div class="inner">
           {{form}}
         </div>

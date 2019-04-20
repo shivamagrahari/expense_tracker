@@ -19,6 +19,7 @@ class SignUp(generic.CreateView):
 # Home Page view
 
 def home(request):
+    updatedata()
     if not request.user.is_authenticated :
         return redirect('/accounts/login')
     username = request.user
@@ -30,6 +31,7 @@ def home(request):
 # New Expense Add View
 
 def add(request):
+    updatedata()
     if request.method == 'POST':
         new_expense = expense_table()
         new_expense.user = request.user
@@ -42,12 +44,14 @@ def add(request):
             new_expense.image = post
 
         new_expense.save()
+        updatedata()
         return redirect('/home')
 
 
 # Delete Existing Expense
 
 def delete(request):
+    updatedata()
     expense = expense_table.objects.get(pk=request.POST['expense'])
     expense.delete()
     return redirect('/home')
@@ -55,6 +59,7 @@ def delete(request):
 # rendering update page for clicked expense
 
 def update(request):
+    updatedata()
     expense = expense_table.objects.get(pk=request.POST['expense'])
     form = PhotoForm()
     return render(request, 'update.html',{'expense':expense,'form':form})
@@ -62,6 +67,7 @@ def update(request):
 # update Existing Expense
 
 def updatedone(request):
+    updatedata()
     expense=expense_table.objects.get(pk=request.POST['expense'])
     expense.name = request.POST['name']
     expense.cost = request.POST['cost']
@@ -71,6 +77,7 @@ def updatedone(request):
 #  ascending order sort by name
 
 def sortbyname(request):
+    updatedata()
     username = request.user
     all_expense = expense_table.objects.filter(user=username).order_by('name').all()
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
@@ -80,6 +87,7 @@ def sortbyname(request):
 # descending order sort by name
 
 def sortbyname_(request):
+    updatedata()
     username = request.user
     all_expense = expense_table.objects.filter(user=username).order_by('-name').all()
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
@@ -89,6 +97,7 @@ def sortbyname_(request):
 #  ascending order sort by cost
 
 def sortbycost(request):
+    updatedata()
     username = request.user
     all_expense = expense_table.objects.filter(user=username).order_by('cost').all()
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
@@ -98,6 +107,7 @@ def sortbycost(request):
 # descending order sort by cost
 
 def sortbycost_(request):
+    updatedata()
     username = request.user
     all_expense = expense_table.objects.filter(user=username).order_by('-cost').all()
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
@@ -106,6 +116,7 @@ def sortbycost_(request):
 #  ascending order sort by date
 
 def sortbydate(request):
+    updatedata()
     username = request.user
     all_expense = expense_table.objects.filter(user=username).order_by('expense_date').all()
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
@@ -115,25 +126,41 @@ def sortbydate(request):
 # descending order sort by name
 
 def sortbydate_(request):
+    updatedata()
     username = request.user
     all_expense = expense_table.objects.filter(user=username).order_by('-expense_date').all()
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
     form = PhotoForm()
     return render(request, 'home.html', {'all_expense': all_expense, 'total': total, 'form': form})
 
+# ascending order sort by image availability
+
 def sortbyimage(request):
+    updatedata()
     username = request.user
     all_expense = expense_table.objects.filter(user=username).order_by('image').all()
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
     form = PhotoForm()
     return render(request, 'home.html', {'all_expense': all_expense, 'total': total, 'form': form})
 
+# descending order sort by image availability
+
 def sortbyimage_(request):
+    updatedata()
     username = request.user
     all_expense = expense_table.objects.filter(user=username).order_by('-image').all()
     total = expense_table.objects.filter(user=username).aggregate(Sum('cost'))
     form = PhotoForm()
     return render(request, 'home.html', {'all_expense': all_expense, 'total': total, 'form': form})
+
+
+# delete entry in photo table which does not contain image
+
+def updatedata():
+    all_expense = photo.objects.all()
+    for exp in all_expense:
+        if not exp.Img :
+            exp.delete()
 
 
 

@@ -12,7 +12,7 @@ class expense_table(models.Model):
     name = models.CharField(max_length=200)
     expense_date = models.DateTimeField('date')
     cost =  models.FloatField(default=0)
-    image = models.ForeignKey(photo,on_delete=models.CASCADE,blank=True,null=True)
+    image = models.ForeignKey(photo,on_delete=models.SET_NULL,blank=True,null=True)
 
 
 
